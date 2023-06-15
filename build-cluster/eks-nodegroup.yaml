@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: >
+  This is template create the cluster K8S Node Group
+
+
+Parameters:
+  SystemCode:
+    Type: String
+    Default: quytn7
+  EnvironmentCode:
+    Type: String
+    Default: udacity
+  Subnet01:
+    Type: String
+    Default: subnet-01a646e83cdbd7f43
+  Subnet02:
+    Type: String
+    Default: subnet-02eb31e674d8aad27
+  Subnet03:
+    Type: String
+    Default: subnet-0b737f81edb370700
+  Subnet04:
+    Type: String
+    Default: subnet-0fe0cab8d3a8e6119
+  ClusterName01:
+    Type: String
+    Default: quytn7
+Resources:
+  K8sNodeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+           - "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+           - "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+           - "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+  K8sNodeGroup:
+    Type: AWS::EKS::Nodegroup
+    Properties:
+      AmiType: AL2_x86_64
+      CapacityType: ON_DEMAND
+      DiskSize: 20
+      NodegroupName: udacity-quytn7
+      ClusterName: !Ref ClusterName01
+      ForceUpdateEnabled: false
+      NodeRole: !GetAtt K8sNodeRole.Arn
+      Subnets:
+        - !Ref Subnet01
+        - !Ref Subnet02
+        - !Ref Subnet03
+        - !Ref Subnet04
+      ScalingConfig:
+        MinSize: 2
+        DesiredSize: 2
+        MaxSize: 3
+
+Outputs:
+  K8sNodeRoleArn:
+    Description: export role k8s node group
+    Value: !GetAtt K8sNodeRole.Arn
+    Export:
+      Name: !Sub ${SystemCode}-${EnvironmentCode}-node-role-01
+
