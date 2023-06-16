@@ -1,21 +1,19 @@
-kind: ReplicationController
 apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: blueapp
-  labels:
-    app: blueapp
+  name: nginx
 spec:
   replicas: 1
   selector:
-    app: blueapp
+    app: nginx
   template:
     metadata:
+      name: nginx
       labels:
-        app: blueapp
+        app: nginx
     spec:
       containers:
-      - name: blueapp
+      - name: nginx
         image: trangocquy123/quytn7-capstone1
         ports:
-        - name: http-server
-          containerPort: 80
+        - containerPort: 80
