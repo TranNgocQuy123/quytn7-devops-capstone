@@ -1,1 +1,1 @@
-kubectl apply -f ./blue_controller.json
+kubectl apply -f ./blue_green_service.json
