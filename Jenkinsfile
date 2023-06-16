@@ -37,22 +37,24 @@ pipeline{
       stage('Deploy Blue System to EKS cluster'){
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
-            sh 'chmod 775 ./blue_green_app/run-kubernet.sh'
-            sh './blue_green_app/run-kubernet.sh '
+            sh 'chmod 775 ./blue_green_app/run-kubernet-blue.sh'
+            sh 'cd blue_green_app $$ ./run-kubernet-blue.sh '
         }
       }
     }
       stage('Deploy Green System to EKS cluster'){
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
-            sh 'cd blue_green_app && kubectl apply -f green_controller.json'
+            sh 'chmod 775 ./blue_green_app/run-kubernet-green.sh'
+            sh 'cd blue_green_app $$ ./run-kubernet-green.sh '
         }
       }
     }
       stage('Deploy Blue-Green Service to EKS cluster'){
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
-            sh 'cd blue_green_app && kubectl apply -f blue_green_service.json'
+            sh 'chmod 775 ./blue_green_app/run-kubernet-service.sh'
+            sh 'cd blue_green_app $$ ./run-kubernet-service.sh '
         }
       }
     }
