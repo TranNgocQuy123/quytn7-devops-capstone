@@ -34,6 +34,13 @@ pipeline{
           }
         }
       }
+      stage('Update config'){
+        steps{
+          withAWS(region:'us-east-1',credentials:'aws-secret'){
+            sh 'aws eks update-kubeconfig --name quytn7 --region us-east-1'
+        }
+      }
+    }
       stage('Deploy Blue System to EKS cluster'){
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
