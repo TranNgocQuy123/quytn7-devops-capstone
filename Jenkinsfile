@@ -37,21 +37,21 @@ pipeline{
       stage('Deploy Blue System to EKS cluster'){
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
-            sh 'kubectl apply -f ./blue_green_app/blue_controller.json'
+            sh 'cd blue_green_app && kubectl apply -f blue_controller.json'
         }
       }
     }
       stage('Deploy Green System to EKS cluster'){
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
-            sh 'kubectl apply -f ./blue_green_app/green_controller.json'
+            sh 'cd blue_green_app && kubectl apply -f green_controller.json'
         }
       }
     }
       stage('Deploy Blue-Green Service to EKS cluster'){
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
-            sh 'kubectl apply -f ./blue_green_app/blue_green_service.json'
+            sh 'cd blue_green_app && kubectl apply -f blue_green_service.json'
         }
       }
     }

@@ -2,26 +2,26 @@
    "kind":"ReplicationController",
    "apiVersion":"v1",
    "metadata":{
-      "name":"greenapp",
+      "name":"green",
       "labels":{
-         "app":"greenapp"
+         "app":"green"
       }
    },
    "spec":{
       "replicas":1,
       "selector":{
-         "app":"greenapp"
+         "app":"green"
       },
       "template":{
          "metadata":{
             "labels":{
-               "app":"greenapp"
+               "app":"green"
             }
          },
          "spec":{
             "containers":[
                {
-                  "name":"greenapp",
+                  "name":"green",
                   "image":"trangocquy123/quytn7-capstone1",
                   "ports":[
                      {
