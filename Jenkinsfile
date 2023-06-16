@@ -37,6 +37,7 @@ pipeline{
       stage('Deploy Blue System to EKS cluster'){
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
+            sh 'chmod 775 ./blue_green_app/run-kubernet.sh'
             sh './blue_green_app/run-kubernet.sh '
         }
       }
