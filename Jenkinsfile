@@ -38,7 +38,7 @@ pipeline{
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
             sh 'chmod 775 ./blue_green_app/run-kubernet-blue.sh'
-            sh 'cd blue_green_app $$ ./run-kubernet-blue.sh '
+            sh 'cd blue_green_app && ./run-kubernet-blue.sh '
         }
       }
     }
@@ -46,7 +46,7 @@ pipeline{
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
             sh 'chmod 775 ./blue_green_app/run-kubernet-green.sh'
-            sh 'cd blue_green_app $$ ./run-kubernet-green.sh '
+            sh 'cd blue_green_app && ./run-kubernet-green.sh '
         }
       }
     }
@@ -54,7 +54,7 @@ pipeline{
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
             sh 'chmod 775 ./blue_green_app/run-kubernet-service.sh'
-            sh 'cd blue_green_app $$ ./run-kubernet-service.sh '
+            sh 'cd blue_green_app && ./run-kubernet-service.sh '
         }
       }
     }
