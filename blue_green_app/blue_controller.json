@@ -2,26 +2,26 @@
    "kind":"ReplicationController",
    "apiVersion":"v1",
    "metadata":{
-      "name":"blue",
+      "name":"blueapp",
       "labels":{
-         "app":"blue"
+         "app":"blueapp"
       }
    },
    "spec":{
       "replicas":1,
       "selector":{
-         "app":"blue"
+         "app":"blueapp"
       },
       "template":{
          "metadata":{
             "labels":{
-               "app":"blue"
+               "app":"blueapp"
             }
          },
          "spec":{
             "containers":[
                {
-                  "name":"blue",
+                  "name":"blueapp",
                   "image":"trangocquy123/quytn7-capstone1",
                   "ports":[
                      {
