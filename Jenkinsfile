@@ -37,7 +37,7 @@ pipeline{
       stage('Deploy Blue System to EKS cluster'){
         steps{
           withAWS(region:'us-east-1',credentials:'aws-secret'){
-            sh 'cd blue_green_app && kubectl apply -f blue_controller.json'
+            sh 'cd blue_green_app && kubectl apply -f blue_controller.yml'
         }
       }
     }
