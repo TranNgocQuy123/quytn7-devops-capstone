@@ -20,7 +20,7 @@ pipeline{
         steps{
           script{
             docker.withRegistry("", registryCredential){
-              dockerImage = docker.build "trangocquy123/quytn7-capstone1"
+              dockerImage = docker.build "trangocquy123/quytn7-capstone2"
             }
           }
         }

@@ -22,7 +22,7 @@
             "containers":[
                {
                   "name":"greenapp",
-                  "image":"trangocquy123/quytn7-capstone1",
+                  "image":"trangocquy123/quytn7-capstone2",
                   "ports":[
                      {
                         "name":"http-server",
