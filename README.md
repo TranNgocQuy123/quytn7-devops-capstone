@@ -4,6 +4,8 @@ Hello guy, I am Quy. I introduce the project with build and deploy using the Ci/
 
 Here is the project, I create the guideline to build 1 microservice using Jenkins pipeline
 
+### Production by me
+http://a9294321ded4041508ddb57a1fa83eca-1749676710.us-east-1.elb.amazonaws.com:8000/
 ### Structure and File Summary
 ```
 .
@@ -25,17 +27,17 @@ Here is the project, I create the guideline to build 1 microservice using Jenkin
 └── requirements.txt  # Python requirements library packages need to install
 ```
 ### Prerequisites
-AWS
-Github
-Docker
+- AWS
+- Github
+- Docker
 
 ### Tools
-EC2
-Git
-Python (Flask)
-Jenkins
-Cloudformation
-AWS Elastic Kubernetes Service
+- EC2
+- Git
+- Python (Flask)
+- Jenkins
+- Cloudformation
+- AWS Elastic Kubernetes Service
 
 ### Installation Dependencies
 1. Create EC2 with image Ubuntu
@@ -79,5 +81,21 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
 ```
-### 
 
+### Run project
+1. deploy eks service and controller
+```
+kubectl apply -f blue_controller.json
+kubectl apply -f green_controller.json
+kubectl apply -f blue_green_service.json
+```
+2. check command eks
+```
+kubectl get nodes
+kubectl logs podname
+kubectl get services
+```
+### Wiki
+- https://www.jenkins.io/doc/book/installing/linux/
+- https://docs.docker.com/engine/install/ubuntu/
+- 
