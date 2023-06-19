@@ -66,5 +66,10 @@ pipeline{
         }
       }
     }
+      stage("Cleaning up") {
+          steps{
+              sh 'sudo docker system prune --force'
+          }
+       }
   }
 }

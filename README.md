@@ -5,6 +5,7 @@ Hello guy, I am Quy. I introduce the project with build and deploy using the Ci/
 Here is the project, I create the guideline to build 1 microservice using Jenkins pipeline
 
 ### Structure and File Summary
+```
 .
 ├── Dockerfile # Dockerfile for the application
 ├── Jenkinsfile # Jenkins file for the CI/CD deployment
@@ -22,6 +23,7 @@ Here is the project, I create the guideline to build 1 microservice using Jenkin
 │   ├── eks-cluster.yaml #create cluster using CF
 │   └── eks-nodegroup.yaml #create node using CF
 └── requirements.txt  # Python requirements library packages need to install
+```
 ### Prerequisites
 AWS
 Github
